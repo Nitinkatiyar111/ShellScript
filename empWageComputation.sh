@@ -7,13 +7,20 @@
    full_time=1
    part_time=0
    	random=$((RANDOM % 2))
-     		if [ $random -eq $full_time ]
-	then
+		case $random in
+			$full_time)
+                     dailyEmployeeWage=$(($wagePerHour * $fullDayHour))
+                     echo "dailyEmployeeWage:"$dailyEmployeeWage
 
-			dailyEmployeeWage=$(($wagePerHour * $fullDayHour))
-     		echo "dailyEmployeeWage:"$dailyEmployeeWage
-	else
+                    ;;
+         $part_time)
+                     dailyEmployeeWage=$(($partWagePerHour * $partDayHour))
+                      echo "dailyEmplyeeWage:"$dailyEmployeeWage
 
-			dailyEmployeeWage=$(($partWagePerHour * $partDayHour))
-			echo "dailyEmployeeWage:"$dailyEmployeeWage
-	fi
+                    ;;
+
+           esac
+
+
+
+
